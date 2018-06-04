@@ -23,10 +23,10 @@ let LoginController = class LoginController {
     async login(login) {
         var users = await this.loginRepo.find();
         var username = login.username;
-        var pword = login.pword;
-        for (var i = 0; i < users.length; i++) {
+        var password = login.password;
+        for (var i = 1; i < users.length; i++) {
             var user = users[i];
-            if (username == user.username && pword == user.password) {
+            if (username == user[i].username && password == user[i].password) {
                 return user[i];
             }
             else {
@@ -47,8 +47,4 @@ LoginController = __decorate([
     __metadata("design:paramtypes", [users_repository_1.UsersRepository])
 ], LoginController);
 exports.LoginController = LoginController;
-/*TODO:
-1. loop through users
-2. fnd by email + pword
-3. return user or error*/
 //# sourceMappingURL=login.controller.js.map

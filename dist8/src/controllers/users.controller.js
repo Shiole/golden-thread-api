@@ -22,6 +22,9 @@ let UsersController = class UsersController {
     async getAllUsers() {
         return await this.usersRepo.find();
     }
+    async getUsersByID(id) {
+        return await this.usersRepo.findById(id);
+    }
 };
 __decorate([
     rest_1.get('/users'),
@@ -29,6 +32,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "getAllUsers", null);
+__decorate([
+    rest_1.get('/users/{id}'),
+    __param(0, rest_1.param.path.number('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "getUsersByID", null);
 UsersController = __decorate([
     __param(0, repository_1.repository(users_repository_1.UsersRepository.name)),
     __metadata("design:paramtypes", [users_repository_1.UsersRepository])

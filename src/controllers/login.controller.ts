@@ -15,11 +15,11 @@ export class LoginController {
     async login(@requestBody() login: Login) {
         var users = await this.loginRepo.find();
         var username = login.username;
-        var pword = login.pword;
+        var password = login.password;
 
-        for (var i = 0; i < users.length; i++) {
+        for (var i = 1; i < users.length; i++) {
             var user = users[i];
-            if (username == user.username && pword == user.password) {
+            if (username == user[i].username && password == user[i].password) {
                 return user[i];
             } else {
                 return console.error();
@@ -27,7 +27,3 @@ export class LoginController {
         }
     }
 }
-/*TODO:
-1. loop through users
-2. fnd by email + pword
-3. return user or error*/
