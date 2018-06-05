@@ -1,22 +1,22 @@
 import { repository } from "@loopback/repository";
-import { UsersRepository } from "../repositories/users.repository";
+import { UserRepository } from "../repositories/user.repository";
 import { post, get, param, requestBody } from "@loopback/rest";
-import { Users } from "../models/users";
+import { User } from "../models/user";
 
-export class UsersController {
+export class UserController {
 
     constructor(
-        @repository(UsersRepository.name) private usersRepo: UsersRepository
+        @repository(UserRepository.name) private userRepo: UserRepository
     ) { }
 
     @get('/users')
-    async getAllUsers(): Promise<Array<Users>> {
-        return await this.usersRepo.find();
+    async getAllUsers(): Promise<Array<User>> {
+        return await this.userRepo.find();
     }
 
     @get('/users/{id}')
-    async getUsersByID(@param.path.number('id') id: number): Promise<Users> {
-        return await this.usersRepo.findById(id);
+    async getUsersByID(@param.path.number('id') id: number): Promise<User> {
+        return await this.userRepo.findById(id);
     }
 
 }

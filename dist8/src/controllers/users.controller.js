@@ -13,17 +13,17 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const repository_1 = require("@loopback/repository");
-const users_repository_1 = require("../repositories/users.repository");
+const user_repository_1 = require("../repositories/user.repository");
 const rest_1 = require("@loopback/rest");
-let UsersController = class UsersController {
-    constructor(usersRepo) {
-        this.usersRepo = usersRepo;
+let UserController = class UserController {
+    constructor(userRepo) {
+        this.userRepo = userRepo;
     }
     async getAllUsers() {
-        return await this.usersRepo.find();
+        return await this.userRepo.find();
     }
     async getUsersByID(id) {
-        return await this.usersRepo.findById(id);
+        return await this.userRepo.findById(id);
     }
 };
 __decorate([
@@ -31,17 +31,17 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], UsersController.prototype, "getAllUsers", null);
+], UserController.prototype, "getAllUsers", null);
 __decorate([
     rest_1.get('/users/{id}'),
     __param(0, rest_1.param.path.number('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
-], UsersController.prototype, "getUsersByID", null);
-UsersController = __decorate([
-    __param(0, repository_1.repository(users_repository_1.UsersRepository.name)),
-    __metadata("design:paramtypes", [users_repository_1.UsersRepository])
-], UsersController);
-exports.UsersController = UsersController;
+], UserController.prototype, "getUsersByID", null);
+UserController = __decorate([
+    __param(0, repository_1.repository(user_repository_1.UserRepository.name)),
+    __metadata("design:paramtypes", [user_repository_1.UserRepository])
+], UserController);
+exports.UserController = UserController;
 //# sourceMappingURL=users.controller.js.map

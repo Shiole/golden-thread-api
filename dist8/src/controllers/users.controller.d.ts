@@ -1,8 +1,8 @@
-import { UsersRepository } from "../repositories/users.repository";
-import { Users } from "../models/users";
-export declare class UsersController {
-    private usersRepo;
-    constructor(usersRepo: UsersRepository);
-    getAllUsers(): Promise<Array<Users>>;
-    getUsersByID(id: number): Promise<Users>;
+import { UserRepository } from "../repositories/user.repository";
+import { User } from "../models/user";
+export declare class UserController {
+    private userRepo;
+    constructor(userRepo: UserRepository);
+    getAllUsers(): Promise<Array<User>>;
+    getUsersByID(id: number): Promise<User>;
 }

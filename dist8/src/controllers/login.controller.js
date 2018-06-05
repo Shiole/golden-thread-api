@@ -13,26 +13,34 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const repository_1 = require("@loopback/repository");
-const users_repository_1 = require("../repositories/users.repository");
+const user_repository_1 = require("../repositories/user.repository");
 const rest_1 = require("@loopback/rest");
 const login_1 = require("../models/login");
 let LoginController = class LoginController {
-    constructor(loginRepo) {
-        this.loginRepo = loginRepo;
+    constructor(userRepo) {
+        this.userRepo = userRepo;
     }
     async login(login) {
-        var users = await this.loginRepo.find();
-        var username = login.username;
-        var password = login.password;
-        for (var i = 1; i < users.length; i++) {
-            var user = users[i];
-            if (username == user[i].username && password == user[i].password) {
-                return user[i];
-            }
-            else {
-                return console.error();
-            }
+        if (!login.username || !login.password) {
+            throw new rest_1.HttpErrors.Unauthorized('invalid credentials');
         }
+        let userExists = !!(await this.userRepo.count({
+            and: [
+                { username: login.username },
+                { password: login.password },
+            ],
+        }));
+        if (!userExists) {
+            throw new rest_1.HttpErrors.Unauthorized('invalid credentials');
+        }
+        return await this.userRepo.findOne({
+            where: {
+                and: [
+                    { username: login.username },
+                    { password: login.password }
+                ],
+            },
+        });
     }
 };
 __decorate([
@@ -43,8 +51,8 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], LoginController.prototype, "login", null);
 LoginController = __decorate([
-    __param(0, repository_1.repository(users_repository_1.UsersRepository.name)),
-    __metadata("design:paramtypes", [users_repository_1.UsersRepository])
+    __param(0, repository_1.repository(user_repository_1.UserRepository.name)),
+    __metadata("design:paramtypes", [user_repository_1.UserRepository])
 ], LoginController);
 exports.LoginController = LoginController;
 //# sourceMappingURL=login.controller.js.map

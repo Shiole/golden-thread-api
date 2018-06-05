@@ -1,16 +1,16 @@
 import { repository } from "@loopback/repository";
-import { UsersRepository } from "../repositories/users.repository";
+import { UserRepository } from "../repositories/user.repository";
 import { post, get, requestBody } from "@loopback/rest";
-import { Users } from "../models/users";
+import { User } from "../models/user";
 
 export class RegistrationController {
 
     constructor(
-        @repository(UsersRepository.name) private usersRepo: UsersRepository
+        @repository(UserRepository.name) private userRepo: UserRepository
     ) { }
 
-    @post('/users')
-    async createUser(@requestBody() user: Users) {
-        return await this.usersRepo.create(user);
+    @post('/user')
+    async createUser(@requestBody() user: User) {
+        return await this.userRepo.create(user);
     }
 }

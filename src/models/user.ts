@@ -1,7 +1,7 @@
 import { Entity, property, model } from '@loopback/repository';
 
 @model()
-export class Users extends Entity {
+export class User extends Entity {
     @property({
         type: 'number',
         id: true
