@@ -23,17 +23,21 @@ let UserController = class UserController {
         return await this.userRepo.find();
     }
     async getUsersByID(id) {
+        let userExists = !!(await this.userRepo.count({ id }));
+        if (!userExists) {
+            throw new rest_1.HttpErrors.BadRequest(`user ID ${id} does not exist`);
+        }
         return await this.userRepo.findById(id);
     }
 };
 __decorate([
-    rest_1.get('/users'),
+    rest_1.get('/user'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getAllUsers", null);
 __decorate([
-    rest_1.get('/users/{id}'),
+    rest_1.get('/user/{id}'),
     __param(0, rest_1.param.path.number('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),

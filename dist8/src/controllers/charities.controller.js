@@ -13,34 +13,35 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const repository_1 = require("@loopback/repository");
-const user_repository_1 = require("../repositories/user.repository");
 const rest_1 = require("@loopback/rest");
-const user_1 = require("../models/user");
-let RegistrationController = class RegistrationController {
-    constructor(userRepo) {
-        this.userRepo = userRepo;
+const charities_repository_1 = require("../repositories/charities.repository");
+let CharitiesController = class CharitiesController {
+    constructor(charitiesRepo) {
+        this.charitiesRepo = charitiesRepo;
     }
-    async createUser(user) {
-        if (!user.username || !user.email || !user.password) {
-            throw new rest_1.HttpErrors.BadRequest('missing data');
-        }
-        let userExists = !!(await this.userRepo.count({ username: user.username } || { email: user.email }));
-        if (userExists) {
-            throw new rest_1.HttpErrors.BadRequest('user already exists');
-        }
-        return await this.userRepo.create(user);
+    async getAllCharities() {
+        return await this.charitiesRepo.find();
+    }
+    async getCharityByID(id) {
+        return await this.charitiesRepo.findById(id);
     }
 };
 __decorate([
-    rest_1.post('/user'),
-    __param(0, rest_1.requestBody()),
+    rest_1.get('/charities'),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [user_1.User]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], RegistrationController.prototype, "createUser", null);
-RegistrationController = __decorate([
-    __param(0, repository_1.repository(user_repository_1.UserRepository.name)),
-    __metadata("design:paramtypes", [user_repository_1.UserRepository])
-], RegistrationController);
-exports.RegistrationController = RegistrationController;
-//# sourceMappingURL=registration.controller.js.map
+], CharitiesController.prototype, "getAllCharities", null);
+__decorate([
+    rest_1.get('/charities/{id}'),
+    __param(0, rest_1.param.path.number('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], CharitiesController.prototype, "getCharityByID", null);
+CharitiesController = __decorate([
+    __param(0, repository_1.repository(charities_repository_1.CharitiesRepository.name)),
+    __metadata("design:paramtypes", [charities_repository_1.CharitiesRepository])
+], CharitiesController);
+exports.CharitiesController = CharitiesController;
+//# sourceMappingURL=charities.controller.js.map
