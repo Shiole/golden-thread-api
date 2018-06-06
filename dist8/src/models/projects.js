@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const repository_1 = require("@loopback/repository");
-let User = class User extends repository_1.Entity {
+let Projects = class Projects extends repository_1.Entity {
     getId() {
         return this.id;
     }
@@ -21,58 +21,30 @@ __decorate([
         id: true
     }),
     __metadata("design:type", Number)
-], User.prototype, "id", void 0);
+], Projects.prototype, "id", void 0);
 __decorate([
     repository_1.property({
         type: 'string',
         required: true
     }),
     __metadata("design:type", String)
-], User.prototype, "username", void 0);
+], Projects.prototype, "name", void 0);
 __decorate([
     repository_1.property({
         type: 'string',
         required: true
     }),
     __metadata("design:type", String)
-], User.prototype, "firstName", void 0);
+], Projects.prototype, "details", void 0);
 __decorate([
     repository_1.property({
         type: 'string',
         required: true
     }),
-    __metadata("design:type", String)
-], User.prototype, "lastName", void 0);
-__decorate([
-    repository_1.property({
-        type: 'string',
-        required: true
-    }),
-    __metadata("design:type", String)
-], User.prototype, "email", void 0);
-__decorate([
-    repository_1.property({
-        type: 'string',
-        required: true
-    }),
-    __metadata("design:type", String)
-], User.prototype, "password", void 0);
-__decorate([
-    repository_1.property({
-        type: 'number',
-        id: true
-    }),
-    __metadata("design:type", Number)
-], User.prototype, "paymentID", void 0);
-__decorate([
-    repository_1.property({
-        type: 'number',
-        id: true
-    }),
-    __metadata("design:type", Number)
-], User.prototype, "addressID", void 0);
-User = __decorate([
+    __metadata("design:type", Object)
+], Projects.prototype, "charityID", void 0);
+Projects = __decorate([
     repository_1.model()
-], User);
-exports.User = User;
-//# sourceMappingURL=user.js.map
+], Projects);
+exports.Projects = Projects;
+//# sourceMappingURL=projects.js.map

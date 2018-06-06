@@ -1,7 +1,10 @@
 import { Entity, property, model } from '@loopback/repository';
+import { Charities } from './charities';
+import { Roles } from './roles';
+import { User } from './user';
 
 @model()
-export class Charities extends Entity {
+export class Permissions extends Entity {
     @property({
         type: 'number',
         id: true
@@ -9,28 +12,22 @@ export class Charities extends Entity {
     id?: number;
 
     @property({
-        type: 'string',
+        type: 'number',
         required: true
     })
-    name: string;
-
-    @property({
-        type: 'string',
-        required: true
-    })
-    mission: string;
+    roleID: Roles['id'];
 
     @property({
         type: 'number',
-        id: true
+        required: true
     })
-    projectID?: number;
+    userID: User['id'];
 
     @property({
-        type: 'number',
-        id: true
+        type: 'string',
+        required: true
     })
-    addressID?: number;
+    duration: string;
 
     getId() {
         return this.id;

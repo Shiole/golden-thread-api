@@ -2,7 +2,7 @@ import { Entity, property, model } from '@loopback/repository';
 import { Charities } from './charities';
 
 @model()
-export class User extends Entity {
+export class PaymentMethods extends Entity {
     @property({
         type: 'number',
         id: true
@@ -13,43 +13,25 @@ export class User extends Entity {
         type: 'string',
         required: true
     })
-    username: string;
-
-    @property({
-        type: 'string',
-        required: true
-    })
-    firstName: string;
-
-    @property({
-        type: 'string',
-        required: true
-    })
-    lastName: string;
-
-    @property({
-        type: 'string',
-        required: true
-    })
-    email: string;
-
-    @property({
-        type: 'string',
-        required: true
-    })
-    password: string;
+    cardHolder: string;
 
     @property({
         type: 'number',
-        id: true
+        required: true
     })
-    paymentID?: number;
+    cardNum: number;
 
     @property({
-        type: 'number',
-        id: true
+        type: 'string',
+        required: true
     })
-    addressID?: number;
+    expDate: string;
+
+    @property({
+        type: 'string',
+        required: true
+    })
+    CVC: string;
 
     getId() {
         return this.id;

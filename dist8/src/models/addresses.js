@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const repository_1 = require("@loopback/repository");
-let User = class User extends repository_1.Entity {
+let Addresses = class Addresses extends repository_1.Entity {
     getId() {
         return this.id;
     }
@@ -21,58 +21,44 @@ __decorate([
         id: true
     }),
     __metadata("design:type", Number)
-], User.prototype, "id", void 0);
+], Addresses.prototype, "id", void 0);
 __decorate([
     repository_1.property({
         type: 'string',
         required: true
     }),
     __metadata("design:type", String)
-], User.prototype, "username", void 0);
+], Addresses.prototype, "streetAddress", void 0);
 __decorate([
     repository_1.property({
         type: 'string',
         required: true
     }),
     __metadata("design:type", String)
-], User.prototype, "firstName", void 0);
+], Addresses.prototype, "city", void 0);
 __decorate([
     repository_1.property({
         type: 'string',
         required: true
     }),
     __metadata("design:type", String)
-], User.prototype, "lastName", void 0);
+], Addresses.prototype, "country", void 0);
 __decorate([
     repository_1.property({
         type: 'string',
         required: true
     }),
     __metadata("design:type", String)
-], User.prototype, "email", void 0);
+], Addresses.prototype, "stateOrProvince", void 0);
 __decorate([
     repository_1.property({
         type: 'string',
         required: true
     }),
     __metadata("design:type", String)
-], User.prototype, "password", void 0);
-__decorate([
-    repository_1.property({
-        type: 'number',
-        id: true
-    }),
-    __metadata("design:type", Number)
-], User.prototype, "paymentID", void 0);
-__decorate([
-    repository_1.property({
-        type: 'number',
-        id: true
-    }),
-    __metadata("design:type", Number)
-], User.prototype, "addressID", void 0);
-User = __decorate([
+], Addresses.prototype, "postalCode", void 0);
+Addresses = __decorate([
     repository_1.model()
-], User);
-exports.User = User;
-//# sourceMappingURL=user.js.map
+], Addresses);
+exports.Addresses = Addresses;
+//# sourceMappingURL=addresses.js.map

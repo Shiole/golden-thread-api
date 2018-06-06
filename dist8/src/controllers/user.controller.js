@@ -60,4 +60,4 @@ UserController = __decorate([
     __metadata("design:paramtypes", [user_repository_1.UserRepository])
 ], UserController);
 exports.UserController = UserController;
-//# sourceMappingURL=users.controller.js.map
+//# sourceMappingURL=user.controller.js.map
