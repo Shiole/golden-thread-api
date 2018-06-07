@@ -28,21 +28,21 @@ __decorate([
         required: true
     }),
     __metadata("design:type", String)
-], PaymentMethods.prototype, "cardHolder", void 0);
+], PaymentMethods.prototype, "card_holder", void 0);
 __decorate([
     repository_1.property({
         type: 'number',
         required: true
     }),
     __metadata("design:type", Number)
-], PaymentMethods.prototype, "cardNum", void 0);
+], PaymentMethods.prototype, "card_number", void 0);
 __decorate([
     repository_1.property({
         type: 'string',
         required: true
     }),
     __metadata("design:type", String)
-], PaymentMethods.prototype, "expDate", void 0);
+], PaymentMethods.prototype, "exp_date", void 0);
 __decorate([
     repository_1.property({
         type: 'string',

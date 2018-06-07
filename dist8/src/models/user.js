@@ -35,14 +35,14 @@ __decorate([
         required: true
     }),
     __metadata("design:type", String)
-], User.prototype, "firstName", void 0);
+], User.prototype, "first_name", void 0);
 __decorate([
     repository_1.property({
         type: 'string',
         required: true
     }),
     __metadata("design:type", String)
-], User.prototype, "lastName", void 0);
+], User.prototype, "last_name", void 0);
 __decorate([
     repository_1.property({
         type: 'string',

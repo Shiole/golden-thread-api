@@ -2,6 +2,7 @@ import { repository } from "@loopback/repository";
 import { UserRepository } from "../repositories/user.repository";
 import { post, get, requestBody, HttpErrors } from "@loopback/rest";
 import { User } from "../models/user";
+import { Registration } from "../models/registration";
 
 export class RegistrationController {
 
@@ -10,20 +11,20 @@ export class RegistrationController {
     ) { }
 
     @post('/registration')
-    async createUser(@requestBody() user: User) {
+    async createUser(@requestBody() newUser: User) {
 
-        if (!user.username || !user.email || !user.password) {
+        if (!newUser.username || !newUser.email || !newUser.password) {
             throw new HttpErrors.BadRequest('missing data');
           }
       
           let userExists: boolean = !!(await this.userRepo.count(
-            { username: user.username } || { email: user.email }
+            { username: newUser.username } || { email: newUser.email }
             ));
       
           if (userExists) {
             throw new HttpErrors.BadRequest('user already exists');
           }
           
-        return await this.userRepo.create(user);
+        return await this.userRepo.create(newUser);
     }
 }

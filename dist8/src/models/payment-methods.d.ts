@@ -1,9 +1,9 @@
 import { Entity } from '@loopback/repository';
 export declare class PaymentMethods extends Entity {
     id?: number;
-    cardHolder: string;
-    cardNum: number;
-    expDate: string;
+    card_holder: string;
+    card_number: number;
+    exp_date: string;
     CVC: string;
     getId(): number | undefined;
 }

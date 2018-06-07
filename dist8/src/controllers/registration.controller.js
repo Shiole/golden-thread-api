@@ -20,19 +20,19 @@ let RegistrationController = class RegistrationController {
     constructor(userRepo) {
         this.userRepo = userRepo;
     }
-    async createUser(user) {
-        if (!user.username || !user.email || !user.password) {
+    async createUser(newUser) {
+        if (!newUser.username || !newUser.email || !newUser.password) {
             throw new rest_1.HttpErrors.BadRequest('missing data');
         }
-        let userExists = !!(await this.userRepo.count({ username: user.username } || { email: user.email }));
+        let userExists = !!(await this.userRepo.count({ username: newUser.username } || { email: newUser.email }));
         if (userExists) {
             throw new rest_1.HttpErrors.BadRequest('user already exists');
         }
-        return await this.userRepo.create(user);
+        return await this.userRepo.create(newUser);
     }
 };
 __decorate([
-    rest_1.post('/user'),
+    rest_1.post('/registration'),
     __param(0, rest_1.requestBody()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [user_1.User]),

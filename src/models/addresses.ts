@@ -13,7 +13,7 @@ export class Addresses extends Entity {
         type: 'string',
         required: true
     })
-    streetAddress: string;
+    street_address: string;
 
     @property({
         type: 'string',
@@ -31,13 +31,13 @@ export class Addresses extends Entity {
         type: 'string',
         required: true
     })
-    stateOrProvince: string;
+    state_province: string;
 
     @property({
         type: 'string',
         required: true
     })
-    postalCode: string;
+    postal_code: string;
 
     getId() {
         return this.id;

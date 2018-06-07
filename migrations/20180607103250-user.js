@@ -42,7 +42,7 @@ exports.up = function (db, done) {
     },
 
     password: {
-      type: 'int',
+      type: 'string',
       length: 50
     },
 
